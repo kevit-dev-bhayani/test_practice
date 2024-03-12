@@ -50,22 +50,22 @@
 //     console.error(error); // Output: Error: Promise 3 rejected
 //   });
 
-const promise1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("Promise 1 resolved");
-  }, 2000);
-});
+// const promise1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 1 resolved");
+//   }, 2000);
+// });
 
-const promise2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    reject("Promise 2 rejcts");
-  }, 1000);
-});
+// const promise2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("Promise 2 rejcts");
+//   }, 1000);
+// });
 
-Promise.race([promise1, promise2])
-  .then((value) => {
-    console.log(value); // Output: Promise 2 resolved
-  })
-  .catch((error) => {
-    console.error(error, "catch"); // This won't be executed
-  });
+// Promise.race([promise1, promise2])
+//   .then((value) => {
+//     console.log(value); // Output: Promise 2 resolved
+//   })
+//   .catch((error) => {
+//     console.error(error, "catch"); // This won't be executed
+//   });
