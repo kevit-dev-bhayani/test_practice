@@ -1,0 +1,54 @@
+1 => db.movies.countDocuments()
+2 => db.movies.find({}).limit(5).pretty()
+3 => db.movies.find({},{title:1, awards:1}).sort({title:1}).limit(5)
+4 => db.movies.find({},{title:1, awards:1}).sort({title:-1}).limit(5)
+5 => db.movies.find({}).sort({'awards.wins':-1}).limit(1)
+6 =>  db.movies.find({genres: ['Adventure'], cast: ['TomHanks']}).limit(5)
+7 => db.movies.aggregate([
+  {
+    $group:
+      /**
+       * _id: The id of the group.
+       * fieldN: The first field name.
+       */
+      {
+        _id: null,
+        totalmovies: {
+          $avg: "$awards.wins",
+        },
+      },
+  },
+])
+
+8 => db.movies.aggregate([
+  {
+    $group:
+      /**
+       * _id: The id of the group.
+       * fieldN: The first field name.
+       */
+      {
+        _id: null,
+        maxAwards: {
+          $max: "$awards.wins",
+        },
+      },
+  },
+])
+
+9 => db.theaters.aggregate([
+  {
+    $group:
+      /**
+       * _id: The id of the group.
+       * fieldN: The first field name.
+       */
+      {
+        _id: "$location.address.state",
+        count: {
+          $sum: 1,
+        },
+      },
+  },
+])
+
